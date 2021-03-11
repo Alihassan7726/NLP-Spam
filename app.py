@@ -8,7 +8,7 @@ Created on Mon Dec  7 10:32:16 2020
 from flask import Flask,render_template,url_for,request
 
 import pickle
-import string , re 
+import string , regex 
 import nltk
 import gzip
 from nltk.stem import WordNetLemmatizer as wnl
@@ -21,7 +21,7 @@ def clean_text(text):
     data = [char for char in text if char not in string.punctuation]
     data = ''.join(data)
     data = str(data)
-    words = re.sub(r"(@[A-Za-z0-9]+)|([^A-Za-z0-9 \t])|(\w+:\/\/\S+)|^rt|http.+?", " ", data )  
+    words = regex.sub(r"(@[A-Za-z0-9]+)|([^A-Za-z0-9 \t])|(\w+:\/\/\S+)|^rt|http.+?", " ", data )  
     words = words.lower()
     final_words =  [wnl().lemmatize(word , pos = "v") for word in words.split()]
     final_words = ' '.join(final_words)
