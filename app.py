@@ -10,6 +10,7 @@ from flask import Flask,render_template,url_for,request
 import pickle
 import string , regex 
 import nltk
+nltk.download('wordnet')
 import gzip
 from nltk.stem import WordNetLemmatizer as wnl
 # load the model from disk
