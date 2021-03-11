@@ -43,7 +43,11 @@ def predict():
         data_clean = [data_clean]
         vect = cv.transform(data_clean).toarray()
         my_prediction = m.predict(vect)
-    return render_template('result.html',prediction = my_prediction)
+        if my_prediction == int(1):
+            output = 1
+        else:
+            output = 0
+    return render_template('result.html',prediction = output)
 
 if __name__ == '__main__':
 	app.run(debug=True)
