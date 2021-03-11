@@ -14,7 +14,7 @@ import gzip
 from nltk.stem import WordNetLemmatizer as wnl
 # load the model from disk
 with gzip.open('model_2.pkl', 'rb') as ifp:
-    model = pickle.load(ifp)
+    m = pickle.load(ifp)
 
 cv=pickle.load(open('vector_f.pkl','rb'))
 def clean_text(text):  
@@ -42,7 +42,7 @@ def predict():
         data_clean = clean_text(data)
         data_clean = [data_clean]
         vect = cv.transform(data_clean).toarray()
-        my_prediction = model.predict(vect)
+        my_prediction = m.predict(vect)
     return render_template('result.html',prediction = my_prediction)
 
 if __name__ == '__main__':
